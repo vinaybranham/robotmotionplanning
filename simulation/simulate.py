@@ -82,7 +82,7 @@ if __name__ == "__main__":
     # Calling RRT
     trace = rrt.rrt_bidirectional(world,robot,scc)
     if trace!=None:
-        trace = list(reversed(trace))
+        trace = list(trace)
 
 
     vis.show()
@@ -133,6 +133,7 @@ if __name__ == "__main__":
                     vis.addText("textCol", strng)
                     vis.setColor("textCol", 0.8500, 0.3250, 0.0980)
 
+                '''
                 collRT0 = collisionChecker.robotObjectCollisions(world.robot(0))
                 for i,j in collRT0:
                     collisionFlag = True
@@ -141,7 +142,7 @@ if __name__ == "__main__":
                     vis.addText("textCol", strng)
                     vis.setColor("textCol", 0.8500, 0.3250, 0.0980)
                     break
-                
+                '''
                 vis.addText("textConfig", strng)
                 time.sleep(0.01)
                 vis.unlock()

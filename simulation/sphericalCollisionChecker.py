@@ -15,6 +15,7 @@ class SphericalCollisionChecker:
         self.obsList = obsPosList
         self.obsDimList = obsDimList
         self.spherePosList = []
+        self.epsilon = 0.01
 
     #Calculates Radius of bounding sphere based on dimensions
     def getRadius(self, dim):
@@ -40,7 +41,7 @@ class SphericalCollisionChecker:
                 obsSphereRad = self.getRadius(obsDim)
                 obsSphere = self.spherePosList[i]
                 dist = np.sqrt((obsSphere[0]-robSphere[0])**2 + (obsSphere[1]-robSphere[1])**2 + (obsSphere[2]-robSphere[2])**2)
-                if(dist <= robSphereRad+obsSphereRad):
+                if(dist <= robSphereRad+obsSphereRad+self.epsilon):
                     collisionFlag = True
                     break
             return collisionFlag

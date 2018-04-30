@@ -18,7 +18,7 @@ import klampt.model.collide as collide
 import math
 
 # Environment limits
-env_limits = np.array([-2, +2, -2, +2,-2, +2]).reshape(3,2)
+env_limits = np.array([-2, +2, -2, +2, 0, +2]).reshape(3,2)
 
 # Robot dimensions
 robot_length = 0.05 
@@ -90,7 +90,7 @@ def new_point():
     xangle = np.random.uniform(0, math.pi)
 
     
-    # Checking in rrt_bidirectional method
+    # Checking collision in rrt_bidirectional method
     return np.array([xrand, yrand, zrand, zangle, yangle, xangle])
 
 # Distance between two orientations
@@ -185,11 +185,12 @@ def compare_nodes(n1, n2):
     return flag
 
 # Plot the path in using matplotlib
-def display(trace):
-    trace = np.array(trace)
+def display(path):
+    path = np.array(path)
+    positions = path[:,0:3]
     fig = plt.figure()
     ax = fig.gca(projection='3d')
-    ax.plot(*zip(*trace))
+    ax.plot(*zip(*positions))
     ax.plot(np.array([xinit[0],xgoal[0]]), np.array([xinit[1],xgoal[1]]), np.array([xinit[2],xgoal[2]]), 'ro')
     plt.show()
 
