@@ -275,7 +275,7 @@ def rrt_bidirectional(world, robot, scc):
         b = a - b
         a = a - b
     if(trace!=None):
-        #display(trace)
+        display(trace)
         print(trace)
     else:
         print("could not find a path")
