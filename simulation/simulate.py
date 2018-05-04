@@ -49,6 +49,15 @@ if __name__ == "__main__":
     # Uncomment the next line to see the bounding spheres
     #ate.getSphereObs(world,spherePosList, obsDimList)
 
+    
+    robot = cube6DoF(world.robot(0), "satellite", vis)
+
+    trace = rrt.rrt_bidirectional(world,robot,scc)
+    if trace!=None:
+        trace = list(trace)
+        #ate.getPath(world, trace)
+        #vis.add("world",world)
+
     # Add the world to the visualizer
     vis.add("world",world)
 
@@ -56,7 +65,7 @@ if __name__ == "__main__":
     vp.w,vp.h = 1200,800
     vis.setViewport(vp)
     
-    robot = cube6DoF(world.robot(0), "satellite", vis)
+    #robot = cube6DoF(world.robot(0), "satellite", vis)
 
     # Display the world coordinate system
     vis.add("WCS", [so3.identity(),[0,0,0]])
@@ -79,11 +88,14 @@ if __name__ == "__main__":
     # Run the visualizer, which runs in a separate thread
     vis.setWindowTitle("Visualization for kinematic simulation")
 
+    '''
     # Calling RRT
     trace = rrt.rrt_bidirectional(world,robot,scc)
     if trace!=None:
         trace = list(trace)
-
+        ate.getPath(world, trace)
+       # vis.add("world",world)
+    '''
 
     vis.show()
     simTime = 300
@@ -124,6 +136,8 @@ if __name__ == "__main__":
 
                 robot.setConfig(rpos)
                 q = robot.getConfig()
+                ate.getPath(world, q)
+                vis.add("world", world)
                 q2f = [ '{0:.2f}'.format(elem) for elem in q]
                 strng = "Robot configuration: " + str(q2f)
                 if scc.checkCollision(q):

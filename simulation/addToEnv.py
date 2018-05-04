@@ -18,7 +18,7 @@ import math
 import mathUtils
 import numpy as np
 
-def getCube(dimX = 0.25, dimY = 0.25, dimZ = 0.25, pos=[0, 0, 0, 0, 0, 0]):
+def getCube(dimX = 0.35, dimY = 0.35, dimZ = 0.35, pos=[0, 0, 0, 0, 0, 0]):
     cube = Geometry3D()
     cube.loadFile("cube.off")
     cube.scale(dimX,dimY,dimZ)
@@ -92,4 +92,32 @@ def getSphereObs(world, posList, dimList):
     '''
     obs_setup = world.makeRigidObject("SphereOBS")
     obs_setup.geometry().set(obsGeo)
+
+def getPath(world, pos, dim=[0.005,0.005,0.005]):
+    obsGeo = Geometry3D()
+    obsGeo.setGroup()
+    #cubeList = []
+    #for i in range(count):
+    #    x = np.random.uniform(-2,2)
+    #    y = np.random.uniform(-2,2)
+    #    z = np.random.uniform(0,2)
+    #    za = np.random.uniform(0,math.pi)
+    #    ya = np.random.uniform(0,math.pi)
+    #    xa = np.random.uniform(0,math.pi)
+    #    cube = getCube([x,y,z,za,ya,xa])
+    #    obsGeo.setElement(i,cube)
+    sphere = getSphere(dim[0], dim[1], dim[2], [pos[0],pos[1],pos[2],0,0,0])
+    obsGeo.setElement(0,sphere)
+    '''
+    rotMat = mathUtils.euler_zyx_mat([math.pi/4,math.pi/6,math.pi/3])
+    p = so3.apply(rotMat,[0.125,0.125,0.125])
+    p = [0.025,0.025,0.025]
+    p = np.array(p)
+    #p = p+[1,1,1]
+    sphere = getSphere([p[0],p[1],p[2],0,0,0])
+    obsGeo.setElement(0,sphere)
+    '''
+    obs_setup = world.makeRigidObject("Path")
+    obs_setup.geometry().set(obsGeo)
+    obs_setup.appearance().setColor(0.75,0.5,0.25,1)
 

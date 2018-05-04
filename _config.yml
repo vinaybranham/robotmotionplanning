@@ -1,1 +1,4 @@
+title: Robot Motion Planning
+description: Implemention of Bi-directional RRT using Bounding Volume Collision Detection
+show_downloads: true
 theme: jekyll-theme-hacker

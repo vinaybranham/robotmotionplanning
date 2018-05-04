@@ -18,7 +18,7 @@ class cube6DoF(object):
         pt = [0, 0, 0]
         if self.vis is not None:
             self.vis.add(robotName, [rotMat, pt])
-            self.vis.setAttribute(robotName, "size", 32)
+            self.vis.setAttribute(robotName, "size", 50)
             self.vis.edit(robotName)
 
     def getConfig(self):
