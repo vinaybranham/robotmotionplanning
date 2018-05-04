@@ -40,17 +40,17 @@ ratio = epsilon/dist
 
 orientratio = orientEpsilon/orientdist
 
-newxcoord = (1-ratio)*xnear[0]+ratio*x[0]
+newxcoord = (1-ratio) * xnear[0]+ratio * x[0]
 
-newycoord = (1-ratio)*xnear[1]+ratio*x[1]
+newycoord = (1-ratio) * xnear[1]+ratio * x[1]
 
-newzcoord = (1-ratio)*xnear[2]+ratio*x[2]
+newzcoord = (1-ratio) * xnear[2]+ratio * x[2]
 
-newzangle = (1-orientratio)*xnear[3]+orientratio*x[3]
+newzangle = (1-orientratio) * xnear[3]+orientratio * x[3]
 
-newyangle = (1-orientratio)*xnear[4]+orientratio*x[4]
+newyangle = (1-orientratio) * xnear[4]+orientratio * x[4]
         
-newxangle = (1-orientratio)*xnear[5]+orientratio*x[5]
+newxangle = (1-orientratio) * xnear[5]+orientratio * x[5]
 
 '''
 
