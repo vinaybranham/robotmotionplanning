@@ -14,14 +14,6 @@ This file describes the robot which is used by Klamp’t for visualization.
 
 This is an xml file that represents the environment, the robot described by the ‘.rob’ file and the terrain in the environment.
 
-'''
-
-<robot name="robot" file="../robots/cube/cube.rob" />
-
-<terrain file="block.off"  scale="2 2 2" translation="0 0 0"/>
-
-'''
-
 ## cube6.py: 
 
 This file has the implementation of the class cube6DoF. This class is a wrapper class that redefines the set and get configuration functions of the robot. As the robot can both translate in XYZ directions and rotate on its own XYZ axis, this gives the robot six degrees of freedom. As the dimensions of the robot are known, only the coordinates of a reference point on the robot and orientation are needed to define it it’s configuration in the environment. Thus, the configuration of the robot is defined by six elements. The first three elements represent the X, Y and Z coordinates of a reference point on the robot and the next three elements represent the Euler angles with respect to the Z, Y and X axis of the robot respectively. The getConfig method give the configuration of the robot and the setConfig method sets the robot to a certain configuration in the environment. This is for visualization in Klamp’t.
